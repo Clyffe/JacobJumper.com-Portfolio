@@ -1,0 +1,25 @@
+:host {
+  display: block;
+  height: 100dvh;
+}
+
+.layout {
+  display: flex;
+  height: 100%;
+  width: 100%;
+
+  &__sidebar {
+    flex: 0 0 30%;
+    width: 30%;
+    position: relative;
+    z-index: 10;
+    // The shadow that "spills" rightward onto the content panel
+    box-shadow: var(--sidebar-shadow);
+  }
+
+  &__main {
+    flex: 1;
+    overflow-y: auto;
+    background: var(--col-right-bg);
+  }
+}

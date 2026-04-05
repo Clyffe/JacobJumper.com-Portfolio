@@ -1,0 +1,234 @@
+:host { display: block; }
+
+.contact {
+  padding: 4rem 4.5rem 5rem;
+  animation: fadeUp .6s ease both;
+}
+
+.page-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 3.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid #ddd9d0;
+
+  &__index {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: #b0a898;
+    letter-spacing: .1em;
+  }
+
+  &__title {
+    font-family: var(--font-display);
+    font-size: 2.8rem;
+    font-weight: 300;
+    color: #1a1916;
+    line-height: 1;
+  }
+}
+
+// ── Two-col layout ───────────────────────────────
+.contact__layout {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 4rem;
+  align-items: start;
+
+  @media (max-width: 860px) {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+// ── Copy ─────────────────────────────────────────
+.contact__lead {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 300;
+  line-height: 1.75;
+  color: #2a2822;
+  margin-bottom: 2.5rem;
+}
+
+.contact__channels {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.channel {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: .75rem;
+  align-items: center;
+
+  &__label {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #f24574;
+  }
+
+  &__value {
+    font-size: 0.85rem;
+    color: #2a2822;
+    transition: color .2s;
+
+    &[href]:hover { color: #f24574; }
+  }
+}
+
+// ── Form ─────────────────────────────────────────
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: .45rem;
+
+  &__label {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #f24574;
+  }
+
+  &__input {
+    font-family: var(--font-ui);
+    font-size: 0.875rem;
+    font-weight: 300;
+    color: #1a1916;
+    background: #fff;
+    border: 1px solid #ddd9d0;
+    border-radius: 3px;
+    padding: .7rem 1rem;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+    resize: none;
+
+    &::placeholder { color: #c8bfb0; }
+
+    &:focus {
+      border-color: #f24574;
+      box-shadow: 0 0 0 3px rgba(201,185,154,.15);
+    }
+
+    &--textarea {
+      min-height: 130px;
+      line-height: 1.7;
+    }
+  }
+}
+
+.submit-btn {
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: .75rem 1.75rem;
+  background: #1a1916;
+  color: #f5f2ed;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background .2s, transform .2s;
+
+  svg { transition: transform .2s; }
+
+  &:hover:not(:disabled) {
+    background: #3a3630;
+    transform: translateY(-1px);
+
+    svg { transform: translateX(3px); }
+  }
+
+  &--loading { opacity: .7; cursor: not-allowed; }
+
+  &:disabled { cursor: not-allowed; }
+}
+
+.spinner {
+  width: 13px;
+  height: 13px;
+  border: 2px solid rgba(245,242,237,.3);
+  border-top-color: #f5f2ed;
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+  flex-shrink: 0;
+}
+
+// ── Success state ────────────────────────────────
+.success {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .75rem;
+  animation: fadeUp .4s ease both;
+
+  &__icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(90,122,90,.12);
+    color: #5a7a5a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    margin-bottom: .25rem;
+  }
+
+  &__heading {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: #1a1916;
+  }
+
+  &__body {
+    font-size: 0.875rem;
+    font-weight: 300;
+    color: #5c554c;
+    line-height: 1.7;
+  }
+
+  &__reset {
+    margin-top: .5rem;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #9e9486;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: color .2s;
+
+    &:hover { color: #1a1916; }
+  }
+}
+
+// ── Animations ───────────────────────────────────
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

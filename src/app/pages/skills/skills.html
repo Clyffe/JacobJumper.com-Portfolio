@@ -1,0 +1,35 @@
+<section class="skills">
+
+  <header class="page-header">
+    <span class="page-header__index">03</span>
+    <h2 class="page-header__title">Skills</h2>
+  </header>
+
+  <div class="skills__grid">
+    @for (group of groups; track group.category) {
+      <div class="skill-group">
+        <h3 class="skill-group__heading">
+          <span class="skill-group__icon">{{ group.icon }}</span>
+          {{ group.category }}
+        </h3>
+        <ul class="skill-group__list">
+          @for (skill of group.items; track skill.name) {
+            <li class="skill-item">
+              <div class="skill-item__top">
+                <span class="skill-item__name">{{ skill.name }}</span>
+                <span class="skill-item__pct">{{ skill.level }}</span>
+              </div>
+              <div class="skill-item__bar">
+                <div
+                  class="skill-item__fill"
+                  [style.width.%]="skill.level"
+                ></div>
+              </div>
+            </li>
+          }
+        </ul>
+      </div>
+    }
+  </div>
+
+</section>

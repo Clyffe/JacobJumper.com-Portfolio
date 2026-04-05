@@ -1,0 +1,57 @@
+<section class="about">
+
+  <header class="page-header">
+    <span class="page-header__index">01</span>
+    <h2 class="page-header__title">About</h2>
+  </header>
+
+  <div class="about__grid">
+
+    <div class="about__bio">
+      <p class="about__lead">
+        I'm a full-stack engineer who loves designing interesting, complex systems, and doing data driven research with those systems. From healthcare SaaS to game development, I've worked across a number of different tools and projects.
+      </p>
+      <p class="about__body">
+        My work sits at the intersection of developer experience and end-user
+        product. I'm happiest when I'm designing an API that developers love
+        to use, or shaving 200 ms off a critical stored procedure.
+      </p>
+      <p class="about__body">
+        Outside of code: amateur carpenter, obsessive home cook, and
+        occasional open-source maintainer.
+      </p>
+
+      <div class="about__details">
+        <div class="detail">
+          <span class="detail__label">Location</span>
+          <span class="detail__value">Houston, TX, USA</span>
+        </div>
+        <div class="detail">
+          <span class="detail__label">Availability</span>
+          <span class="detail__value availability">Open to offers</span>
+        </div>
+        <div class="detail">
+          <span class="detail__label">Languages</span>
+          <span class="detail__value">English, Spanish</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="about__timeline">
+      <h3 class="timeline-heading">Experience & Education</h3>
+      <ol class="timeline">
+        @for (entry of timeline; track entry.year; let last = $last) {
+          <li class="timeline__entry" [class.timeline__entry--last]="last">
+            <span class="timeline__year">{{ entry.year }}</span>
+            <div class="timeline__body">
+              <p class="timeline__role">{{ entry.role }}</p>
+              <p class="timeline__company">{{ entry.company }}</p>
+              <p class="timeline__desc">{{ entry.desc }}</p>
+            </div>
+          </li>
+        }
+      </ol>
+    </div>
+
+  </div>
+</section>
