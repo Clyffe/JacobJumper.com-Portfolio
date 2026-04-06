@@ -2,6 +2,7 @@
   "name": "portfolio",
   "version": "0.0.0",
   "type": "module",
+  "create-env": "node create-env.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
