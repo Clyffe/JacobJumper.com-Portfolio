@@ -1,4 +1,4 @@
-const fs = require('fs');
+import { mkdirSync, writeFileSync } from 'fs';
 
 const env = `export const environment = {
   production: true,
@@ -8,5 +8,5 @@ const env = `export const environment = {
 };
 `;
 
-fs.mkdirSync('./src/environments', { recursive: true });
-fs.writeFileSync('./src/environments/environment.ts', env);
+mkdirSync('./src/environments', { recursive: true });
+writeFileSync('./src/environments/environment.ts', env)
