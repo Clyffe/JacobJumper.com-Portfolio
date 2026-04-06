@@ -1,5 +1,13 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import emailjs, { type EmailJSResponseStatus } from '@emailjs/browser';
+import { environment } from 'src/environments/environment.js';
+
+interface ContactForm {
+  name: string;
+  email: string; 
+  message: string;
+}
 
 @Component({
   selector: 'app-contact',
@@ -8,17 +16,18 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './contact.scss'
 })
 export class ContactComponent {
-  form = { name: '', email: '', message: '' };
+  form : ContactForm =  { name: '', email: '', message: '' };
   submitted = false;
   sending = false;
+  emailJS_service_id = environment.EMAILJS_SERVICE_ID;
+  emailJS_publicKey = environment.EMAILJS_PUBLICKEY;
+  emailJs_template = environment.EMAILJS_TEMPLATEID;
 
-  async send() {
-    if (!this.form.name || !this.form.email || !this.form.message) return;
-    this.sending = true;
-    // Simulate network delay
-    await new Promise(r => setTimeout(r, 1200));
-    this.sending = false;
-    this.submitted = true;
+
+  sendEmail() {
+    console.log(this.form)
+
+    emailjs.send(this.emailJS_service_id, this.emailJs_template, {...this.form}, this.emailJS_publicKey)
   }
 
   reset() {

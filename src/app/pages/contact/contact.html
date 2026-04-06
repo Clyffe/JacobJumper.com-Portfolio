@@ -41,7 +41,7 @@
     <!-- Right: form or success -->
     <div class="contact__form-wrap">
       @if (!submitted) {
-        <form class="contact-form" (ngSubmit)="send()" #f="ngForm" novalidate>
+        <form class="contact-form" #f="ngForm" (click)="sendEmail()">
 
           <div class="field">
             <label class="field__label" for="name">Name</label>
@@ -81,13 +81,12 @@
               required
             ></textarea>
           </div>
-
           <button
             class="submit-btn"
-            type="submit"
+            type="button"
             [class.submit-btn--loading]="sending"
             [disabled]="sending"
-          >
+            (click)="sendEmail()">
             @if (sending) {
               <span class="spinner"></span>Sending…
             } @else {
